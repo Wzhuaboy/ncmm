@@ -120,7 +120,14 @@ if not os.path.exists(binary_path):
         sys.exit(1)
 
 # 运行 ncmm
-cmd = [binary_path] + RUN_ARGS
+# 2026-11-04 修复: 原版只跑 ./ncmm task, 不传 -c, 程序默认只找
+# --home/config.yaml 和 ${HOME}/.ncmm/config.yaml, 找不到就用内置
+# 默认配置, 所以 scripts/config.yaml 里改的 groupIds 从来没生效。
+# 这里明确用 -c 指向脚本同目录的 config.yaml, --home 不动,
+# Cookie/数据库/日志路径保持原样, 只改配置来源。
+config_path = os.path.join(current_dir, "config.yaml")
+cmd = [binary_path, "-c", config_path] + RUN_ARGS
+print(f"[LOG] 配置文件: {config_path}")
 print(f"[LOG] 正在执行: {' '.join(cmd)}")
 result = subprocess.run(cmd, cwd=current_dir)
 sys.exit(result.returncode)
