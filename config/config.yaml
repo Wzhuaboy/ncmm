@@ -115,13 +115,13 @@ sign:
     # 播放日推歌曲，约需 31～45 分钟，默认关闭。
     enablePlayDailyRecommend: false
     # 自动领取时段红包雨（每天4个时段，每时段最多6次，无风控要求）。
-    enableRedPacket: false
+    enableRedPacket: true
     # [实验性] 自动执行刮刮乐/好运翻卡/扭蛋抽奖（仅消耗当前已有次数，需手动开启）。
-    enableLottery: false
+    enableLottery: true
     # [实验性] 模拟看视频增加抽奖次数及额外领128云贝（存在广告反作弊检测风险，默认关闭）。
     enableLotteryWatchVideo: false
     # [实验性] 自动执行看视频赚云贝（共15阶段，每天上限约28320云贝，每次模拟8秒视频停留并上报权益，存在反作弊检测风险，默认关闭）。
-    enableWatchVideoYunbei: false
+    enableWatchVideoYunbei: true
 
 # 听歌/播放类任务通用配置
 play:
